@@ -16,7 +16,6 @@ class SinglyLinkedList {
     if (!val) {
       throw new Error('The push method expects a value in argument');
     }
-    // console.log(this.head, this.tail, this.length);
 
     let newNode = new Node(val);
 
@@ -28,13 +27,42 @@ class SinglyLinkedList {
       this.tail = newNode;
     }
     this.length++;
-    // console.log(this.head, this.tail, this.length);
 
     return this;
+  }
+
+  pop() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    let current = this.head;
+    let newTail = current;
+    while (current.next) {
+      newTail = current;
+      current = current.next;
+    }
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current;
   }
 }
 
 let list = new SinglyLinkedList();
-list.push('Hello');
-list.push('Goodbye');
-console.log(list.head.next);
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+console.log(list);
+list.pop();
+list.pop();
+list.pop();
+list.pop();
+console.log(list);
