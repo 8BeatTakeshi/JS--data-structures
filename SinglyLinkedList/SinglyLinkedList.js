@@ -89,15 +89,32 @@ class SinglyLinkedList {
 
     return this;
   }
+
+  get(index) {
+    if (index === undefined || index < 0 || index > this.length - 1) {
+      return null;
+    }
+
+    let counter = 0;
+    let current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+
+    return current;
+  }
 }
 
 let list = new SinglyLinkedList();
-list.unshift('1');
-list.unshift('2');
-list.unshift('3');
-list.unshift('4');
-list.unshift('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
 console.log(list);
+let item = list.get(4);
+console.log(item);
 // list.shift();
 // list.shift();
 // list.shift();
