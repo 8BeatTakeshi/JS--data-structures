@@ -13,7 +13,7 @@ class SinglyLinkedList {
   }
 
   push(val) {
-    if (!val) {
+    if (val === undefined) {
       return;
     }
     let newNode = new Node(val);
@@ -73,7 +73,7 @@ class SinglyLinkedList {
   }
 
   unshift(val) {
-    if (!val) {
+    if (val === undefined) {
       return;
     }
 
@@ -104,6 +104,20 @@ class SinglyLinkedList {
 
     return current;
   }
+
+  set(val, index) {
+    if (val === undefined || index === undefined) {
+      return;
+    }
+
+    let foundNode = this.get(index);
+    if (!foundNode) {
+      return false;
+    }
+
+    foundNode.val = val;
+    return true;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -113,8 +127,11 @@ list.push('3');
 list.push('4');
 list.push('5');
 console.log(list);
-let item = list.get(4);
-console.log(item);
+list.set('new value', 4);
+console.log(list.tail);
+console.log(list);
+// let item = list.get(4);
+// console.log(item);
 // list.shift();
 // list.shift();
 // list.shift();
