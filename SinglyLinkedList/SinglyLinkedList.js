@@ -143,6 +143,24 @@ class SinglyLinkedList {
     return true;
   }
 
+  remove(index) {
+    if (index === undefined || index < 0 || index > this.length - 1) {
+      return undefined;
+    }
+
+    if (index === 0) {
+      return this.shift();
+    } else if (index === this.length - 1) {
+      return this.pop();
+    } else {
+      let prev = this.get(index - 1);
+      let removedNode = prev.next;
+      prev.next = removedNode.next;
+      this.length--;
+      return removedNode;
+    }
+  }
+
   print() {
     let current = this.head;
 
@@ -167,43 +185,10 @@ list.push('2');
 list.push('3');
 list.push('4');
 list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
 console.log(list);
 list.insert('new value', 3);
+list.print();
+list.remove();
 list.print();
 // console.log(list);
 // let item = list.get(4);
