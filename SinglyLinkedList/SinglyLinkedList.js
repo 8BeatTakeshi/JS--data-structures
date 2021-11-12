@@ -95,11 +95,11 @@ class SinglyLinkedList {
       return null;
     }
 
-    let counter = 0;
+    let count = 0;
     let current = this.head;
-    while (counter !== index) {
+    while (count !== index) {
       current = current.next;
-      counter++;
+      count++;
     }
 
     return current;
@@ -136,9 +136,8 @@ class SinglyLinkedList {
 
     let newNode = new Node(val);
     let prev = this.get(index - 1);
-    let next = prev.next;
+    newNode.next = prev.next;
     prev.next = newNode;
-    newNode.next = next;
     this.length++;
 
     return true;
@@ -147,11 +146,12 @@ class SinglyLinkedList {
   print() {
     let current = this.head;
 
-    let counter = 0;
-    while (counter < this.length) {
-      console.log(current.val);
+    let count = 0;
+    console.log('*=*=*= SINGLY LINKED LIST  =*=*=*');
+    while (count < this.length) {
+      console.log(`${count} - Node(${current.val})`);
       current = current.next;
-      counter++;
+      count++;
     }
   }
 }
@@ -162,9 +162,49 @@ list.push('2');
 list.push('3');
 list.push('4');
 list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
 console.log(list);
-list.insert('new value', 1);
-console.log(list.insert('hello'));
+list.insert('new value', 3);
+list.print();
 // console.log(list);
 // let item = list.get(4);
 // console.log(item);
