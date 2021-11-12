@@ -161,13 +161,36 @@ class SinglyLinkedList {
     }
   }
 
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
+
   print() {
     let current = this.head;
 
     let count = 0;
-    console.log('*=*=*= SINGLY LINKED LIST  =*=*=*');
+    console.log('\n*=*=*= SINGLY LINKED LIST  =*=*=*');
     while (count < this.length) {
-      console.log(`${count} - Node(${current.val})`);
+      if (count === 0) {
+        console.log(`${count} - Node(${current.val}) - HEAD`);
+      } else if (count === this.length - 1) {
+        console.log(`${count} - Node(${current.val}) - TAIL`);
+      } else {
+        console.log(`${count} - Node(${current.val})`);
+      }
       current = current.next;
       count++;
     }
@@ -180,15 +203,9 @@ list.push('2');
 list.push('3');
 list.push('4');
 list.push('5');
-list.push('1');
-list.push('2');
-list.push('3');
-list.push('4');
-list.push('5');
-console.log(list);
-list.insert('new value', 3);
+// list.insert('new value', 3);
 list.print();
-list.remove();
+list.reverse();
 list.print();
 // console.log(list);
 // let item = list.get(4);
