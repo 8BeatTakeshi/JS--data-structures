@@ -89,16 +89,38 @@ class DoublyLinkedList {
 
     return this;
   }
+
+  get(index) {
+    if (index === undefined || index < 0 || index > this.length - 1) {
+      return null;
+    }
+
+    let current = this.head;
+    let direction = 'next';
+
+    // If it will start from the tail
+    if (index > (this.length - 1) / 2) {
+      console.log('START FROM THE TAIL');
+      current = this.tail;
+      direction = 'prev';
+      index = this.length - 1 - index;
+    }
+
+    for (let i = 0; i < index; i++) current = current[direction];
+
+    return current;
+  }
 }
 
 let list = new DoublyLinkedList();
-list.unshift('1');
-list.unshift('2');
-list.unshift('3');
-list.unshift('4');
-list.unshift('5');
-
-console.log(list);
+list.push('1');
+list.push('2');
+list.push('3');
+list.push('4');
+list.push('5');
+list.push('6');
+let item = list.get(2);
+console.log(item);
 // console.log(list.head);
 // console.log(list.tail);
 // let v = list.shift();
