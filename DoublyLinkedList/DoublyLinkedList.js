@@ -100,7 +100,6 @@ class DoublyLinkedList {
 
     // If it will start from the tail
     if (index > (this.length - 1) / 2) {
-      // console.log('START FROM THE TAIL');
       current = this.tail;
       direction = 'prev';
       index = this.length - 1 - index;
@@ -122,6 +121,34 @@ class DoublyLinkedList {
     }
 
     foundNode.data = data;
+    return true;
+  }
+
+  insert(data, index) {
+    if (data === undefined || index === undefined) {
+      return;
+    }
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    if (index === this.length) {
+      // !! === convert value to Boolean
+      return !!this.push(data);
+    }
+    if (index === 0) {
+      return !!this.unshift(data);
+    }
+
+    let newNode = new Node(data);
+    let prev = this.get(index - 1);
+    let next = prev.next;
+
+    prev.next = newNode;
+    newNode.prev = prev;
+    newNode.next = next;
+    next.prev = newNode;
+    this.length++;
+
     return true;
   }
 
@@ -151,9 +178,10 @@ list.push('3');
 list.push('4');
 list.push('5');
 list.push('6');
-let item = list.set('NEW VALUE', 0);
+let item = list.insert('NEW VALUE', 2);
 console.log(item);
 list.print();
+console.log(list.head.next.next);
 // console.log(list.head);
 // console.log(list.tail);
 // let v = list.shift();
