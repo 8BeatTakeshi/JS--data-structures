@@ -1,6 +1,6 @@
 class Node {
-  constructor(val) {
-    this.val = val;
+  constructor(data) {
+    this.data = data;
     this.next = null;
   }
 }
@@ -12,11 +12,11 @@ class SinglyLinkedList {
     this.length = 0;
   }
 
-  push(val) {
-    if (val === undefined) {
+  push(data) {
+    if (data === undefined) {
       return;
     }
-    let newNode = new Node(val);
+    let newNode = new Node(data);
 
     if (!this.head) {
       this.head = newNode;
@@ -72,12 +72,12 @@ class SinglyLinkedList {
     return removedHead;
   }
 
-  unshift(val) {
-    if (val === undefined) {
+  unshift(data) {
+    if (data === undefined) {
       return;
     }
 
-    let newNode = new Node(val);
+    let newNode = new Node(data);
 
     if (!this.head) {
       this.tail = newNode;
@@ -105,8 +105,8 @@ class SinglyLinkedList {
     return current;
   }
 
-  set(val, index) {
-    if (val === undefined || index === undefined) {
+  set(data, index) {
+    if (data === undefined || index === undefined) {
       return;
     }
 
@@ -115,12 +115,12 @@ class SinglyLinkedList {
       return false;
     }
 
-    foundNode.val = val;
+    foundNode.data = data;
     return true;
   }
 
-  insert(val, index) {
-    if (val === undefined || index === undefined) {
+  insert(data, index) {
+    if (data === undefined || index === undefined) {
       return;
     }
     if (index < 0 || index > this.length) {
@@ -128,13 +128,13 @@ class SinglyLinkedList {
     }
     if (index === this.length) {
       // !! === convert value to Boolean
-      return !!this.push(val);
+      return !!this.push(data);
     }
     if (index === 0) {
-      return !!this.unshift(val);
+      return !!this.unshift(data);
     }
 
-    let newNode = new Node(val);
+    let newNode = new Node(data);
     let prev = this.get(index - 1);
     newNode.next = prev.next;
     prev.next = newNode;
@@ -185,11 +185,11 @@ class SinglyLinkedList {
     console.log('\n*=*=*= SINGLY LINKED LIST  =*=*=*');
     while (count < this.length) {
       if (count === 0) {
-        console.log(`${count} - Node(${current.val}) - HEAD`);
+        console.log(`${count} - Node(${current.data}) - HEAD`);
       } else if (count === this.length - 1) {
-        console.log(`${count} - Node(${current.val}) - TAIL`);
+        console.log(`${count} - Node(${current.data}) - TAIL`);
       } else {
-        console.log(`${count} - Node(${current.val})`);
+        console.log(`${count} - Node(${current.data})`);
       }
       current = current.next;
       count++;
