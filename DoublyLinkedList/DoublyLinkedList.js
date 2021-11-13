@@ -124,6 +124,24 @@ class DoublyLinkedList {
     foundNode.data = data;
     return true;
   }
+
+  print() {
+    let current = this.head;
+
+    let count = 0;
+    console.log('\n*=*=*= DOUBLY LINKED LIST  =*=*=*');
+    while (count < this.length) {
+      if (count === 0) {
+        console.log(`${count} - Node(${current.data}) - HEAD`);
+      } else if (count === this.length - 1) {
+        console.log(`${count} - Node(${current.data}) - TAIL`);
+      } else {
+        console.log(`${count} - Node(${current.data})`);
+      }
+      current = current.next;
+      count++;
+    }
+  }
 }
 
 let list = new DoublyLinkedList();
@@ -135,7 +153,7 @@ list.push('5');
 list.push('6');
 let item = list.set('NEW VALUE', 0);
 console.log(item);
-console.log(list);
+list.print();
 // console.log(list.head);
 // console.log(list.tail);
 // let v = list.shift();
