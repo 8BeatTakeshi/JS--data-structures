@@ -51,6 +51,25 @@ class DoublyLinkedList {
 
     return removedNode;
   }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+
+    let removedNode = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = removedNode.next;
+      this.head.prev = null;
+      removedNode.next = null;
+    }
+    this.length--;
+
+    return removedNode;
+  }
 }
 
 let list = new DoublyLinkedList();
@@ -63,7 +82,11 @@ list.push('5');
 // console.log(list);
 // console.log(list.head);
 // console.log(list.tail);
-let v = list.pop();
+let v = list.shift();
+list.shift();
+list.shift();
+list.shift();
+list.shift();
 console.log(v);
 // console.log(list);
 // console.log(list.head);
