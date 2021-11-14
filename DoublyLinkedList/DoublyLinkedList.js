@@ -181,18 +181,22 @@ class DoublyLinkedList {
   print() {
     let current = this.head;
 
-    let count = 0;
-    console.log('\n*=*=*= DOUBLY LINKED LIST  =*=*=*');
-    while (count < this.length) {
-      if (count === 0) {
-        console.log(`${count} - Node(${current.data}) - HEAD`);
-      } else if (count === this.length - 1) {
-        console.log(`${count} - Node(${current.data}) - TAIL`);
-      } else {
-        console.log(`${count} - Node(${current.data})`);
+    if (this.length === 0) {
+      console.log('\nTHE LIST IS EMPTY\n');
+    } else {
+      console.log('\n*=*=*= SINGLY LINKED LIST  =*=*=*');
+      let count = 0;
+      while (count < this.length) {
+        if (count === 0) {
+          console.log(`${count} - Node(${current.data}) - HEAD`);
+        } else if (count === this.length - 1) {
+          console.log(`${count} - Node(${current.data}) - TAIL`);
+        } else {
+          console.log(`${count} - Node(${current.data})`);
+        }
+        current = current.next;
+        count++;
       }
-      current = current.next;
-      count++;
     }
   }
 }
@@ -211,10 +215,12 @@ console.log(list.head.next.next);
 // console.log(list.head);
 // console.log(list.tail);
 // let v = list.shift();
-// list.shift();
-// list.shift();
-// list.shift();
-// list.shift();
+list.shift();
+list.shift();
+list.shift();
+list.shift();
+list.shift();
+list.print();
 // console.log(v);
 // console.log(list);
 // console.log(list.head);
