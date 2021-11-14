@@ -207,6 +207,6 @@ list.push('4');
 list.push('5');
 let oldTail = list.remove(3);
 console.log(oldTail);
-// list.print();
+list.print();
 // list.reverse();
 // list.print();
