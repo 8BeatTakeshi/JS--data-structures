@@ -27,6 +27,18 @@ class Stack {
     // this.size++;
     return ++this.size;
   }
+
+  pop() {
+    if (!this.last) {
+      return undefined;
+    }
+
+    let last = this.last;
+    this.last = last.prev;
+    this.size--;
+
+    return last.data;
+  }
 }
 
 let stack = new Stack();
@@ -35,4 +47,11 @@ stack.push(2);
 stack.push(3);
 stack.push(4);
 stack.push(5);
+console.log(stack);
+let item = stack.pop();
+console.log(item);
+stack.pop();
+stack.pop();
+stack.pop();
+stack.pop();
 console.log(stack);
