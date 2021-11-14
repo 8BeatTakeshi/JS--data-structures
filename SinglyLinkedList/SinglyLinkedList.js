@@ -61,13 +61,12 @@ class SinglyLinkedList {
     }
 
     let removedNode = this.head;
+    if (this.head === this.tail) {
+      this.tail = null;
+    }
     this.head = removedNode.next;
     removedNode.next = null;
     this.length--;
-
-    if (this.length === 0) {
-      this.tail = null;
-    }
 
     return removedNode;
   }
@@ -183,18 +182,22 @@ class SinglyLinkedList {
   print() {
     let current = this.head;
 
-    let count = 0;
-    console.log('\n*=*=*= SINGLY LINKED LIST  =*=*=*');
-    while (count < this.length) {
-      if (count === 0) {
-        console.log(`${count} - Node(${current.data}) - HEAD`);
-      } else if (count === this.length - 1) {
-        console.log(`${count} - Node(${current.data}) - TAIL`);
-      } else {
-        console.log(`${count} - Node(${current.data})`);
+    if (this.length === 0) {
+      console.log('\nTHE LIST IS EMPTY\n');
+    } else {
+      console.log('\n*=*=*= SINGLY LINKED LIST  =*=*=*');
+      let count = 0;
+      while (count < this.length) {
+        if (count === 0) {
+          console.log(`${count} - Node(${current.data}) - HEAD`);
+        } else if (count === this.length - 1) {
+          console.log(`${count} - Node(${current.data}) - TAIL`);
+        } else {
+          console.log(`${count} - Node(${current.data})`);
+        }
+        current = current.next;
+        count++;
       }
-      current = current.next;
-      count++;
     }
   }
 }
@@ -205,8 +208,15 @@ list.push('2');
 list.push('3');
 list.push('4');
 list.push('5');
-let oldTail = list.remove(3);
-console.log(oldTail);
 list.print();
+list.shift();
+list.print();
+list.shift();
+list.shift();
+list.shift();
+list.shift();
+list.print();
+console.log(list);
+
 // list.reverse();
 // list.print();
