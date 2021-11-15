@@ -111,4 +111,4 @@ tree.insert(79);
 
 console.log(tree);
 console.log(tree.insert(79));
-console.log(tree.find(37));
+//console.log(tree.find(79));
